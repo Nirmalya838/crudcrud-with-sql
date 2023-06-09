@@ -17,7 +17,7 @@ fetch('/api/read')
   .catch(error => console.log(error));
 
 function editUser(userId) {
-  axios.get(`/api/read/${userId}`)
+  axios.get(`api/read/${userId}`)
     .then(response => {
       const name = document.getElementById('name');
       const email = document.getElementById('email');
@@ -36,7 +36,8 @@ function editUser(userId) {
         axios.put(`/api/update/${userId}`, updatedData)
           .then(response => {
             console.log(response);
-            location.reload();
+            window.location.assign = "/update.html";
+            window.location.href = "/update.html";
           })
           .catch(error => console.log(error));
       });
@@ -48,7 +49,8 @@ function deleteUser(userId) {
   axios.delete(`/api/delete/${userId}`)
     .then(response => {
       console.log(response);
-      location.reload();
+       window.location.assign = "/delete.html";
+       window.location.href = "/delete.html";
     })
     .catch(error => console.log(error));
 }

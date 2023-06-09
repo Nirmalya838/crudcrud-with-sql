@@ -1,18 +1,8 @@
 const express = require('express');
-const path = require('path');
-const connection = require('../database/db');
 const router = express.Router();
+const getController = require('../controllers/getController');
 
-router.get('/api/read', (req, res) => {
-    const query = 'SELECT * FROM users';
-    connection.query(query, (err, results) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
-      res.json(results);
-    });
-  });
+router.get('/api/read', getController.getUsers);
+router.get('/', getController.getIndexPage);
 
-  module.exports=router;
+module.exports = router;
